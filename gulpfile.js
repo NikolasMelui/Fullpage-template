@@ -130,5 +130,5 @@ gulp.task('rsync', function() {
 gulp.task('removedist', function() { return del.sync('dist'); });
 gulp.task('clearcache', function () { return cache.clearAll(); });
 
-gulp.task('location', function() { return setTimeout(function() { gutil.log('Your code is running at http://buseedoapp-webpackmen.c9users.io:8080/.') }, 2000); });
+gulp.task('location', function() { return setTimeout(function() { gutil.log('Your code is running at http://fullpage-template-webpackmen.c9users.io:8080/.') }, 2000); });
 gulp.task('default', ['watch', 'location']);
