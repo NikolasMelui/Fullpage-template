@@ -20,7 +20,7 @@ $(function() {
 
 	//Scrolling
 		css3: true,
-		scrollingSpeed: 700,
+		scrollingSpeed: 550,
 		autoScrolling: true,
 		fitToSection: true,
 		//fitToSectionDelay: 1000,
@@ -65,7 +65,7 @@ $(function() {
 		//parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
 
 		//Custom selectors
-		//sectionSelector: '.section',
+		sectionSelector: '.sect',
 		//slideSelector: '.slide',
 
 		lazyLoading: true,
