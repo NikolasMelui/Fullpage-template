@@ -67,63 +67,6 @@ body
 	color: $d
 	background-color: $l
 
-.mfp-fade.mfp-bg
-  opacity: 0
-  transition: all 0.3s ease-out
-.mfp-fade.mfp-bg.mfp-ready
-  opacity: 0.7
-  background-color: $d
-.mfp-fade.mfp-bg.mfp-removing
-  opacity: 0
-.mfp-fade.mfp-wrap .mfp-content
-  opacity: 0
-  transition: all 0.15s ease-out
-.mfp-fade.mfp-wrap.mfp-ready .mfp-content
-  opacity: 1
-.mfp-fade.mfp-wrap.mfp-removing .mfp-content
-  opacity: 0
-.mfp-container
-	padding: 0
-.mfp-close-btn-in
-	.mfp-close
-		color: $l
-		font-size: 36px
-		width: 20px
-		height: 20px
-		line-height: 0
-		transition: 0.3s
-		top: 10px
-		right: 10px
-.mfp-content
-	padding: 0
-	position: relative
-	height: 100%
-
-.mm-menu.mm-opened.mm-pagedim-white~#mm-blocker
-	background-color: $d
-html.mm-opening .mm-menu.mm-opened[class*=mm-pagedim]~#mm-blocker
-	opacity: 0.7
-
-.hamburger
-	position: fixed
-	z-index: 100000
-	right: 0
-	&:hover
-		opacity: 1
-.hamburger-box
-	width: 20px
-.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
-	height: 2px
-	width: 20px
-	transition: 1s!important
-	opacity: 1
-.hamburger--slider .hamburger-inner::after
-	top: 10px
-.hamburger--slider .hamburger-inner::before
-	top: 5px
-.hamburger--slider.is-active .hamburger-inner::after
-	top: 20px
-
 .hidden
 	display: none
 .visible-xs
@@ -132,7 +75,6 @@ html.mm-opening .mm-menu.mm-opened[class*=mm-pagedim]~#mm-blocker
 a
 	text-decoration: none!important
 	outline: none!important
-	color: $d
 	transition: 0.5s
 input, textarea
 	outline: none
@@ -151,28 +93,24 @@ address
 button
 	outline: none
 	border-radius: 0
-.btn
-	color: $l
-	background-color: $d
-	padding: 5px 20px
-	border: 1px solid $d
-	white-space: nowrap
-	&:hover
-		color: $d
-		background-color: $l
-.btn_2
-	color: $d
-	background-color: $l
-	padding: 10px 20px
-	border: 1px solid $l
-	white-space: nowrap
+@mixin btn ($borderCol, $col, $bgCol, $hovCol, $bgHovCol, $border-radius)
+	border: 1px solid $borderCol
+	border-radius: $border-radius
+	color: $col
+	background: $bgCol
 	transition: 0.5s
-	width: 100%
-	font-size: 20px
-	margin-top: 10px
-	&:hover
-		color: $l
-		background-color: $d
+	cursor: url(../img/cursor.cur), pointer
+	font-size: 26px
+	font-weight: 700
+	outline: none
+	white-space: nowrap
+	&:hover, &:active, &:focus
+		color: $hovCol
+		background: $bgHovCol
+.btn
+	@include btn ($l, $d, $l, $l, transparent, 0)
+	padding: 15px 25px
+
 ul
 	padding: 0
 	margin: 0
@@ -227,42 +165,6 @@ li
 			&::before
 				left: -25px	
 
-.mm-menu.mm-theme-white
-	background: $d
-.mm-listview>li>a, .mm-listview>li>span
-	color: $l
-	font-size: 20px
-.act-link
-	padding-right: 30px
-	a
-		position: relative
-		&::before
-			content: ''
-			position: absolute
-			top: 0
-			bottom: 0
-			margin: auto
-			left: -40px
-			background: $l
-			height: 1px
-			width: 30px
-.mm-navbar
-	img
-		width: 100%
-		height: auto
-.m-listview
-	padding: 90px 20px
-	display: flex
-	flex-direction: column
-	height: 100%
-	align-items: flex-start!important
-	justify-content: center
-	li
-		padding: 20px 0
-		a
-			color: $l
-			font-size: 20px
-
 .link
 	position: relative
 	&::after,&::before
@@ -282,6 +184,12 @@ li
 	&:hover
 		&::after,&::before
 			width: 20px
+
+.sect
+.container
+	width: 100%
+	height: 100%
+	position: relative
 
 .down
 	position: absolute
@@ -369,4 +277,59 @@ li
 	opacity: 0
 	display: none
 	transition: 0.5s
+.mm-menu.mm-theme-white
+	background: $d
+.mm-listview>li>a, .mm-listview>li>span
+	color: $l
+	font-size: 20px
+.act-link
+	padding-right: 30px
+	a
+		position: relative
+		&::before
+			content: ''
+			position: absolute
+			top: 0
+			bottom: 0
+			margin: auto
+			left: -40px
+			background: $l
+			height: 1px
+			width: 30px
+.m-listview
+	padding: 90px 20px
+	display: flex
+	flex-direction: column
+	height: 100%
+	align-items: flex-start!important
+	justify-content: center
+	li
+		padding: 20px 0
+		a
+			color: $l
+			font-size: 20px
+.mm-menu.mm-opened.mm-pagedim-white~#mm-blocker
+	background-color: $d
+html.mm-opening .mm-menu.mm-opened[class*=mm-pagedim]~#mm-blocker
+	opacity: 0.7
+
+.hamburger
+	position: fixed
+	z-index: 100000
+	right: 0
+	&:hover
+		opacity: 1
+.hamburger-box
+	width: 20px
+.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
+	height: 2px
+	width: 20px
+	transition: 1s!important
+	opacity: 1
+.hamburger--slider .hamburger-inner::after
+	top: 10px
+.hamburger--slider .hamburger-inner::before
+	top: 5px
+.hamburger--slider.is-active .hamburger-inner::after
+	top: 20px
 @import "media" // Всегда в конце
