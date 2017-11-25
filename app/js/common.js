@@ -6,9 +6,43 @@ $(window).on('load', function () {
 })
 $(function() {
 
+	var icon = $("#my-icon");
+	var blocker = $('.blocker');
+	var mobmnu = {
+		selector: $('.mobile-menu'),
+		page: $('.page'),
+		blocker: $('.blocker'),
+		open: function(){
+			var ths = this;
+			ths.selector.css('display', 'block');
+			ths.page.css('transform', 'translateX(-80%)');
+			ths.blocker.addClass('blocker-z-index');
+			setTimeout(function(){
+				ths.blocker.addClass('blocker-active');
+			}, 100);
+		},
+		close: function(){
+			var ths = this;
+			ths.blocker.removeClass('blocker-active');
+			setTimeout(function(){
+				ths.blocker.removeClass('blocker-z-index');
+			}, 500)
+			ths.page.css('transform', 'translateX(0)');
+			ths.selector.css('display', 'none');
+		}
+	}
+	icon.click(function(){
+		mobmnu.open();
+		$(this).addClass('is-active');
+	});
+	blocker.click(function(){
+		mobmnu.close();
+		icon.removeClass('is-active');
+	});
+
   $('.content').fullpage({
 		//Navigation
-		menu: '.top-mnu, .mob-mnu',
+		menu: '.top-mnu, .mobile-menu',
 		//lockAnchors: false,
 		anchors: ['block_1', 'block_2', 'block_3', 'block_4'],
 		navigation: true,
@@ -72,6 +106,7 @@ $(function() {
 
 		//events
 		onLeave: function(index, nextIndex, direction){
+			mobmnu.close();
 			$('#toTop').fadeIn();
 			if(index == 2 && direction == 'up'){
 				$('#toTop').fadeOut();
@@ -133,59 +168,6 @@ $(function() {
 	    conf.css({'display': 'none', 'z-index': '-100'});
 	  }, 500)
 	})
-	
-	$(".mob-mnu").mmenu({
-		slidingSubmenus: true,
-		pageScroll: {
-			scroll: true,
-			update: true
-		},
-		classNames: {
-			vertical: "expand",
-		},
-		"offCanvas": {
-			"position": "right"
-		},
-		"navbar":{
-			title:'<img src="../img/logo.svg">'
-		},
-		// "navbars": [
-		// 	{
-		// 		"position": "bottom",
-		// 		"content":[
-		// 			"<a class='mdi mdi-email-outline' href='#/'></a>",
-		// 			"<a class='mdi mdi-instagram' href='#/'></a>",
-		// 			"<a class='mdi mdi-facebook' href='#/'></a>"
-		// 		]
-		// 	}
-		// ],
-		"extensions": [
-			"border-none",
-			"theme-white",
-			"pagedim-white",
-			"listview-justify"
-		],
-		// drag: true
-	});
-	
-	var $icon = $("#my-icon");
-	var API = $(".mob-mnu").data("mmenu");
-
-	$icon.on("click", function(){
-	   API.open();
-	});
-
-	API.bind("open:finish", function(){
-		$icon.addClass("is-active");
-	});
-	API.bind("close:finish", function(){
-		$icon.removeClass("is-active");
-	});
-
-	if($(".mob-mnu ul").hasClass("mm-listview")){
-		$(".mob-mnu ul").removeClass("mm-listview");
-		$(".mob-mnu ul").addClass("m-listview");
-	}
 
   $(".phone").inputmask("+7 (999) 999-99-99");
 

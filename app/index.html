@@ -2,7 +2,6 @@
 <html lang="ru">
 
 <head>
-
 	<meta charset="utf-8">
 
 	<title>Fullpage template</title>
@@ -29,15 +28,37 @@
 
 <body>
 	<div id="page-preloader">
-	<span class="spinner">
-		<div class="md-preloader">
-		  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="45" width="45" viewbox="0 0 75 75">
-		    <circle cx="37.5" cy="37.5" r="33.5" stroke-width="1"/>
-		  </svg>
+		<span class="spinner">
+			<div class="md-preloader">
+			  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="45" width="45" viewbox="0 0 75 75">
+			    <circle cx="37.5" cy="37.5" r="33.5" stroke-width="1"/>
+			  </svg>
+			</div>
+		</span>
+	</div>
+	<nav class="mobile-menu">
+		<div class="inner-mnu">
+			<div class="logo-mob" data-menuanchor="block_1">
+				<a href="#block_1"><img src="img/logo.png"></a>
+			</div>
+			<ul>
+				<li data-menuanchor="block_1"><a href="#block_1">Блок 1</a></li>
+				<li data-menuanchor="block_2"><a href="#block_2">Блок 2</a></li>
+				<li data-menuanchor="block_3"><a href="#block_3">Блок 3</a></li>
+				<li data-menuanchor="block_4"><a href="#block_4">Блок 4</a></li>
+			</ul>
+			<div class="soc">
+				<div class="vk">
+					<a href><img src="img/vk.png"></a>
+				</div>
+				<div class="insta">
+					<a href><img src="img/insta.png"></a>
+				</div>
+			</div>
 		</div>
-	</span>
-</div>
+	</nav>
 	<div class="page">
+		<div class="blocker"></div>
 		<div id="my-icon" href="#my-menu" class="hamburger hamburger--slider visible-xs">
 			<span class="hamburger-box">
 				<span class="hamburger-inner"></span>
@@ -51,14 +72,6 @@
 				<li data-menuanchor="block_4"><a href="#block_4" class="link">Блок 4</a></li>
 			</ul>
 		</nav>
-		<nav class="mob-mnu">
-			<ul>
-				<li data-menuanchor="block_1"><a href="#block_1">Блок 1</a></li>
-				<li data-menuanchor="block_2"><a href="#block_2">Блок 2</a></li>
-				<li data-menuanchor="block_3"><a href="#block_3">Блок 3</a></li>
-				<li data-menuanchor="block_4"><a href="#block_4">Блок 4</a></li>
-			</ul>
-		</nav>
 		<div class="subject-success">
 			Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время
 		</div>
@@ -66,12 +79,19 @@
 			<main>
 				<header class="sect" id="block-1" style="background-image: url()" data-section-name="block_1">
 					<div class="container">
-						123	
+						<h1 class="h1">Заголовок 1</h1>
+						<h2 class="h2">Заголовок 2</h2>
+						<h3 class="h3">Заголовок 3</h3>
+						<h4 class="h4">Заголовок 4</h4>
+						<h5 class="h5">Заголовок 5</h5>
 					</div>
 				</header>
 				<section class="sect about" id="block-2" style="background-image: url()" data-section-name="block_2">
 					<div class="container">
-						123	
+						<button class="btn">Отправить</button>
+						<input type="submit" name="" value="Отправить" class="btn">
+						<a href="" class="btn">Отправить</a>
+						<input type="text" name="name" placeholder="Имя:">
 					</div>
 				</section>
 				<section class="sect about" id="block-3" style="background-image: url()" data-section-name="block_3">

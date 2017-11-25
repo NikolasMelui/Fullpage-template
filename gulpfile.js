@@ -1,18 +1,18 @@
 var gulp           = require('gulp'),
-	gutil          = require('gulp-util' ),
-	sass           = require('gulp-sass'),
-	browserSync    = require('browser-sync'),
-	concat         = require('gulp-concat'),
-	uglify         = require('gulp-uglify'),
-	cleanCSS       = require('gulp-clean-css'),
-	rename         = require('gulp-rename'),
-	del            = require('del'),
-	imagemin       = require('gulp-imagemin'),
-	cache          = require('gulp-cache'),
-	autoprefixer   = require('gulp-autoprefixer'),
-	ftp            = require('vinyl-ftp'),
-	notify         = require("gulp-notify"),
-	rsync          = require('gulp-rsync');
+		gutil          = require('gulp-util' ),
+		sass           = require('gulp-sass'),
+		browserSync    = require('browser-sync'),
+		concat         = require('gulp-concat'),
+		uglify         = require('gulp-uglify'),
+		cleanCSS       = require('gulp-clean-css'),
+		rename         = require('gulp-rename'),
+		del            = require('del'),
+		imagemin       = require('gulp-imagemin'),
+		cache          = require('gulp-cache'),
+		autoprefixer   = require('gulp-autoprefixer'),
+		ftp            = require('vinyl-ftp'),
+		notify         = require("gulp-notify"),
+		rsync          = require('gulp-rsync');
 
 // Пользовательские скрипты проекта
 
@@ -29,7 +29,7 @@ gulp.task('js', ['common-js'], function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
 		//'app/libs/fullpage.js/vendors/scrolloverflow.min.js',
-		'app/libs/fullpage.js/dist/jquery.fullpage.min.js',
+		'app/libs/fullpage.js/dist/jquery.fullpage.js',
 		'app/libs/jQuery.mmenu/dist/jquery.mmenu.all.js',
 		//'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
 		'app/libs/inputmask/dist/min/inputmask/inputmask.min.js',
@@ -37,7 +37,7 @@ gulp.task('js', ['common-js'], function() {
 		//'app/js/common.min.js', // Всегда в конце
 		])
 	.pipe(concat('scripts.min.js'))
-	// .pipe(uglify()) // Минимизировать весь js (на выбор)
+	.pipe(uglify()) // Минимизировать весь js (на выбор)
 	.pipe(gulp.dest('app/js'))
 	.pipe(browserSync.reload({stream: true}));
 });
