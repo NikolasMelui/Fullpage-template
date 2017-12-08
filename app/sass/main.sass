@@ -54,6 +54,7 @@ body textarea:required:valid
 
 html, body
 	height: 100%
+	transition: 0.5s
 
 body
 	font-size: 24px
@@ -124,37 +125,67 @@ li
 	list-style-type: none
 
 .h1
-	font-size: 100px
+	font-size: 80px
 	margin: 0
-
 .h2
-	font-size: 50px
+	font-size: 35px
 	margin: 0
 .h3
-	font-size: 40px
+	font-size: 50px
 	margin: 0
 .h4
 	font-size: 30px
 	margin: 0
 .h5
-	font-size: 26px
-	margin: 0
+	font-size: 30px
 
 #fp-nav
 	ul
 		li
+			margin: 7px 0
+			width: 20px
+			&:hover
+				a
+					span
+						width: 14px
+						height: 14px
+						margin: auto
+			a
+				position: relative
+				span
+					position: absolute
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					margin: auto
+					width: 10px
+					height: 10px
+			a.active
+				span
+					margin: auto!important
+					width: 14px
+					height: 14px
+.fp-scrollable
+		height: 75vh!important
 
 .top-mnu
 	position: fixed
-	top: 0
+	top: 20px
 	width: 100%
 	display: flex
 	align-items: center
+	justify-content: space-between
 	z-index: 1
+	padding: 0 10%
 	ul
 		display: flex
-		justify-content: space-around
-		width: 100%
+		justify-content: space-between
+	li
+		padding: 0 30px
+		white-space: nowrap
+	img
+		width: 100px
 	.active
 		a
 			&::after,&::before
@@ -173,6 +204,7 @@ li
 				left: -25px	
 
 .link
+	font-size: 24px
 	position: relative
 	&::after,&::before
 		content: ''
@@ -248,6 +280,8 @@ li
 		height: 60px
 
 .sect
+	background-size: cover
+	background-position: center
 .container
 	width: 100%
 	position: relative
@@ -321,8 +355,7 @@ li
 	display: none
 	z-index: 1000
 	img
-		height: 20px
-		transform: rotate(180deg)
+		height: 30px
 .subject-success
 	position: fixed
 	z-index: 9999999
@@ -375,4 +408,11 @@ li
 	z-index: 999999999
 .blocker-active
 	opacity: 1
+.made
+	width: 100%
+	text-align: center
+	a
+		color: $acc
+.keyboard-open
+	transform: translateY(-20%)
 @import "media" // Всегда в конце

@@ -5,11 +5,12 @@
 	<meta charset="utf-8">
 
 	<title>Fullpage template</title>
-	<meta name="description" content="">
+	<meta name="description" content="Fullpage template">
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+	<meta name="apple-mobile-web-app-title" content="Fullpage template">
+	<meta name="application-name" content="Fullpage template">
 	<meta property="og:image" content="path/to/image.jpg">
 	<link rel="shortcut icon" href="img/favicon/fav.ico" type="image/x-icon">
 	<link rel="apple-touch-icon" href="img/favicon/fav.png">
@@ -65,8 +66,10 @@
 			</span>
 		</div>
 		<nav class="top-mnu hidden-xs">
+			<div class="logo" data-menuanchor="block_1">
+				<a href="#block_1"><img src="img/logo.png"></a>
+			</div>
 			<ul>
-				<li data-menuanchor="block_1"><a href="#block_1" class="link">Блок 1</a></li>
 				<li data-menuanchor="block_2"><a href="#block_2" class="link">Блок 2</a></li>
 				<li data-menuanchor="block_3"><a href="#block_3" class="link">Блок 3</a></li>
 				<li data-menuanchor="block_4"><a href="#block_4" class="link">Блок 4</a></li>
@@ -74,6 +77,9 @@
 		</nav>
 		<div class="subject-success">
 			Ваша заявка отправлена, мы свяжемся с Вами в ближайшее время
+		</div>
+		<div class="fixed">
+			<span>123</span>
 		</div>
 		<div class="content">
 			<main>
@@ -96,13 +102,15 @@
 				</section>
 				<section class="sect about" id="block-3" style="background-image: url()" data-section-name="block_3">
 					<div class="container">
-						123	
+						<input type="text" name="name" placeholder="Имя:">
+						<button class="btn">Отправить</button>
 					</div>
 				</section>
 				<footer class="sect" id="block-7" style="background-image: url()" data-section-name="block_4">
 					<div class="container">
 						123	
 					</div>
+					<div class="made">made in <a href="http://multikey.studio/" target="_blank">multikey.studio</a></div>
 				</footer>
 			</main>
 		</div>
@@ -198,7 +206,7 @@
 	</div>
 	<div id="toTop" data-menuanchor="block_1">
 		<a href="#block_1">
-			<img src="img/totop.svg" alt="top">
+			<img src="img/up.svg" alt="top">
 		</a>
 	</div>
 	<link rel="stylesheet" href="css/main.min.css">

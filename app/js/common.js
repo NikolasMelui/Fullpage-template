@@ -1,14 +1,16 @@
 $(window).on('load', function () {
 	var $preloader = $('#page-preloader'),
-			$spinner   = $preloader.find('.spinner');
+		$spinner   = $preloader.find('.spinner');
 	$spinner.fadeOut();
 	$preloader.fadeOut();
+	window. scrollTo(0, 0); 
 })
-$(function() {
 
-	var icon = $("#my-icon");
+$(function() {
+	var hamburger = $("#my-icon");
 	var blocker = $('.blocker');
 	var mobmnu = {
+		icon: $("#my-icon"),
 		selector: $('.mobile-menu'),
 		page: $('.page'),
 		blocker: $('.blocker'),
@@ -20,6 +22,7 @@ $(function() {
 			setTimeout(function(){
 				ths.blocker.addClass('blocker-active');
 			}, 100);
+			ths.icon.addClass('is-active');
 		},
 		close: function(){
 			var ths = this;
@@ -29,15 +32,14 @@ $(function() {
 			}, 500)
 			ths.page.css('transform', 'translateX(0)');
 			ths.selector.css('display', 'none');
+			ths.icon.removeClass('is-active');
 		}
 	}
-	icon.click(function(){
+	hamburger.click(function(){
 		mobmnu.open();
-		$(this).addClass('is-active');
 	});
 	blocker.click(function(){
 		mobmnu.close();
-		icon.removeClass('is-active');
 	});
 
   $('.content').fullpage({
@@ -56,7 +58,7 @@ $(function() {
 		css3: true,
 		scrollingSpeed: 550,
 		autoScrolling: true,
-		fitToSection: true,
+		fitToSection: false,
 		//fitToSectionDelay: 1000,
 		scrollBar: false,
 		easing: 'easeInOutCubic',
@@ -235,4 +237,140 @@ $(function() {
   //   }
   //   repeats();
   // }
+  var wind_height = window.innerHeight;
+	var doc_height
+	var ua = navigator.userAgent.toLowerCase();
+	var isAndroid = ua.indexOf("android") > -1;
+	if(isAndroid) {
+		if($('html').hasClass('keyboard-open')){
+			console.log("It's not android");
+		}else{
+			$('input').focus(function() { 
+				doc_height = wind_height;
+				$('html').css('height', doc_height);
+			})
+			$('input').blur(function() {
+				$('html').css('height', '100%');
+			})
+		}
+		var Keyboard;
+		Keyboard = (function(){
+			var OPEN_KEYBOARD_CLASS,
+					blurAction,
+					blurTimeout,
+						focusAction,
+					getRandomId,
+					getUniqueId,
+					hasFocusedInput,
+					initWindowSize,
+					keyboardClose,
+					keyboardOpen,
+					setUniqueId;
+			OPEN_KEYBOARD_CLASS = 'keyboard-open';
+			initWindowSize = {
+				height: 0,
+				width: 0
+			};
+		hasFocusedInput = false;
+		blurTimeout = null;
+		function Keyboard() {
+			setTimeout(function() {
+				initWindowSize.height = window.innerHeight;
+				initWindowSize.width = window.innerWidth;
+				return true;
+			}, 600);
+	    this.bindListeners();
+	  }
+	  Keyboard.prototype.bindListeners = function() {
+	    this.windowResizeListener();
+	    return this.focusListeners();
+	  };
+	  Keyboard.prototype.windowResizeListener = function() {
+	    return window.addEventListener('resize', function() {
+	      var bodyTag;
+	      bodyTag = document.getElementsByTagName('html')[0];
+	      if (initWindowSize.height > window.innerHeight) {
+	        if (bodyTag.className.indexOf(OPEN_KEYBOARD_CLASS) === -1) {
+	          bodyTag.className += bodyTag.className + ' ' + OPEN_KEYBOARD_CLASS;
+	          return keyboardOpen();
+	        }
+	      } else {
+	        return keyboardClose();
+	      }
+	    });
+	  };
+	  Keyboard.prototype.focusListeners = function() {
+	    var input, inputs, textarea, textareas, _i, _j, _len, _len1;
+	    inputs = document.getElementsByTagName('input');
+	    textareas = document.getElementsByTagName('textarea');
+	    for (_i = 0, _len = inputs.length; _i < _len; _i++) {
+	      input = inputs[_i];
+	      setUniqueId(input);
+	      input.addEventListener('focus', function() {
+	        return focusAction.apply(this);
+	      });
+	      input.addEventListener('blur', function() {
+	        return blurAction.apply(this);
+	      });
+	    }
+	    for (_j = 0, _len1 = textareas.length; _j < _len1; _j++) {
+	      textarea = textareas[_j];
+	      setUniqueId(textarea);
+	      textarea.addEventListener('focus', function() {
+	        return focusAction.apply(this);
+	      });
+	      textarea.addEventListener('blur', function() {
+	        return blurAction.apply(this);
+	      });
+	    }
+	    return true;
+	  };
+	  focusAction = function() {
+	    var bodyTag;
+	    bodyTag = document.getElementsByTagName('html')[0];
+	    if (bodyTag.className.indexOf(OPEN_KEYBOARD_CLASS) === -1) {
+	      if (this.type !== 'checkbox' && this.type !== 'radio' && this.type !== 'submit') {
+	        bodyTag.className += bodyTag.className + ' ' + OPEN_KEYBOARD_CLASS;
+	        keyboardOpen();
+	      }
+	    }
+	    hasFocusedInput = getUniqueId(this);
+	    if (hasFocusedInput === getUniqueId(this) && blurTimeout !== null) {
+	      return clearTimeout(blurTimeout);
+	    }
+	  };
+	  blurAction = function() {
+	    var thisInput;
+	    thisInput = this;
+	    return blurTimeout = setTimeout(function() {
+	      if (hasFocusedInput === getUniqueId(thisInput)) {
+	        keyboardClose();
+	        hasFocusedInput = false;
+	        return blurTimeout = null;
+	      }
+	    }, 500);
+	  };
+	  keyboardOpen = function() {
+	    return true;
+	  };
+	  keyboardClose = function() {
+	    var bodyTag;
+	    bodyTag = document.getElementsByTagName('html')[0];
+	    return bodyTag.className = bodyTag.className.replace(OPEN_KEYBOARD_CLASS, '');
+	  };
+	  setUniqueId = function(elm) {
+	    return elm.setAttribute('data-unique-id', getRandomId());
+	  };
+	  getUniqueId = function(elm) {
+	    return elm.getAttribute('data-unique-id');
+	  };
+	  getRandomId = function() {
+	    return Math.floor((Math.random() * 9999999) + 1);
+	  };
+	  return Keyboard;
+		})();
+		window.onload = function() {
+		  return new Keyboard;
+		};
+	}
 });
