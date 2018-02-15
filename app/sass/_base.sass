@@ -55,8 +55,8 @@
 	.open-politics
 		color: $l
 		border-bottom: $bord-l
-
-.slider, .slider-2
+////SLIDER////
+.slider
 	width: 80%
 	position: relative
 	cursor: pointer
@@ -65,7 +65,6 @@
 	overflow: hidden
 	position: relative
 	transition: 0.5s
-	padding: 0 0 30px 0
 .slide-line
 	transition: 0.5s
 	overflow-y: hidden
@@ -94,7 +93,7 @@
 	align-items: center
 	background-size: cover
 	transition: 0.5s
-//ARROW STYLE
+
 .arrow
 	cursor: pointer
 	position: absolute
@@ -102,20 +101,17 @@
 	bottom: 0
 	margin: auto
 	z-index: 300
-	height: 35px
 	transition: 0.5s
 	&:hover
 		transform: scale(1.2)
-	img
-		height: 100%
 .prev
-	left: -30px
+	left: -40px
 .next
-	right: -30px
-//DOTS STYLE
+	right: -40px
+
 .slider-dots
 	position: absolute
-	bottom: 0
+	bottom: -30px
 	width: 100%
 	left: 0
 	display: flex
@@ -138,8 +134,8 @@
 	height: 10px
 	justify-content: space-around
 	align-items: center
-//FILTER STYLE
-.filter, .filter-2
+
+.filter
 	display: flex
 	justify-content: space-around
 	align-items: center
@@ -171,7 +167,7 @@
 		left: -30px
 		width: 20px
 		height: 1px
-//PRELOAD STYLE
+
 .slider-rebuild
 	.slider-preload
 		opacity: 1
