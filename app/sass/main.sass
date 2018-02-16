@@ -139,5 +139,41 @@
 	background-color: $l
 	transition: 0.9s
 
+//Icons example
+.triangle-top
+	@include triangle-top (20px, $l)
+.triangle-bottom
+	@include triangle-bottom (20px, $l)
+.triangle-left
+	@include triangle-left (20px, $l)
+.triangle-right
+	@include triangle-right (20px, $l)
+.triangle-top-right
+	@include triangle-top-right (15px, $l)
+.triangle-top-left
+	@include triangle-top-left (15px, $l)
+.triangle-bottom-right
+	@include triangle-bottom-right (15px, $l)
+.triangle-bottom-left
+	@include triangle-bottom-left (15px, $l)
+
+.angle-top
+	@include angle-top (30px, $l, 2px)
+.angle-bottom
+	@include angle-bottom (30px, $l, 2px)
+.angle-left
+	@include angle-left (30px, $l, 2px)
+.angle-right
+	@include angle-right (30px, $l, 2px)
+	
+.arrow-back
+	@include arrow-back (40px, $l, 2px)
+.arrow-next
+	@include arrow-next (40px, $l, 2px)
+.arrow-up
+	@include arrow-up (40px, $l, 2px)
+.arrow-down
+	@include arrow-down (40px, $l, 2px)
+
 @import "anim"
 @import "media"
