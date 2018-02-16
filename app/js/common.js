@@ -768,6 +768,7 @@
   }
   window.sslider = SpaceSlide;
 })();
+
 //Mobile menu
 var mob_menu = new mmenu({
   menu: '.mob-mnu',
@@ -808,6 +809,7 @@ var space_slide = new sslider({
     items_slide: 1,
     res_w: true,
     res_h: true,
+    arrow: '.control',
     responsive: {
       width:{
         '300':{
@@ -869,7 +871,6 @@ var space_slide = new sslider({
     viewport: '.viewport',
     slide_line: '.slide-line',
     item: '.item',
-    arrow: '.arrow',
     automove: false,
     interval: 5000,
     loop: false

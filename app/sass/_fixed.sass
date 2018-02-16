@@ -48,8 +48,8 @@
 	top: 0
 	left: 0
 	width: 0
-	background-color: $d
-	height: 3px
+	background-color: $l
+	height: 2px
 	z-index: 300
 	transition: 1s ease-in-out
 
@@ -106,11 +106,10 @@
 #politics::-webkit-scrollbar-thumb
 	background-color: $d
 .close-politics
-	position: absolute
-	width: 20px
+	@include close-icon (25px, $d, 3px)
 	top: 10px
 	right: 10px
 	cursor: pointer
-	transition: 0.5s
+	position: absolute
 	&:hover
 		transform: scale(1.2)
